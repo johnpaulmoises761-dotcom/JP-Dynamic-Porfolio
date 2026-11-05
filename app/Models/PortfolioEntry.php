@@ -1,0 +1,9 @@
+<?php
+namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+class PortfolioEntry extends Model {
+    protected $fillable = ['type','title','subtitle','description','url','image_path','sort_order'];
+    protected $appends = ['image_url'];
+    public function getImageUrlAttribute(): ?string { return $this->image_path ? Storage::disk('public')->url($this->image_path) : null; }
+}

@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Original portfolio styles (styles.css), unchanged except the background image path ===== */
+:root{--bg:#030a1c;--ink:#eaf2ff;--mute:#a3b8d8;--acc:#1b9cf2;--acc2:#5ad1ff;--line:rgba(255,255,255,.16)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:-1;background:#030a1c url("/images/background.jpg") center/cover no-repeat}
+.bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(3,10,28,.45),rgba(3,10,28,.88) 80%),linear-gradient(180deg,rgba(3,10,28,.5),rgba(3,10,28,.7))}
+/* Liquid glass */
+.glass{position:relative;overflow:hidden;border-radius:22px;border:1px solid var(--line);
+ background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.04) 42%,rgba(60,150,255,.09));
+ -webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -1px 0 rgba(255,255,255,.07),inset 0 0 28px rgba(110,180,255,.07),0 20px 44px -16px rgba(0,8,40,.75);
+ transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(112deg,rgba(255,255,255,.26),rgba(255,255,255,0) 30%)}
+.glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(150,210,255,.28),transparent 65%)}
+.glass:hover{transform:translateY(-4px);border-color:rgba(130,200,255,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 0 32px rgba(110,180,255,.12),0 26px 50px -16px rgba(0,120,255,.35)}
+.glass:hover::after{opacity:1}
+.glass>*{position:relative;z-index:1}
+.lbl{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.7rem;letter-spacing:.14em;color:var(--acc);text-transform:uppercase}
+.h2{font-size:clamp(1.6rem,4vw,2.1rem);font-weight:700;letter-spacing:-.02em;margin:.35rem 0 .6rem}
+.bar{display:block;width:44px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+.chip{display:inline-block;padding:.35rem .8rem;border-radius:999px;font-size:.78rem;color:#d6e6ff;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:.25s}
+.chip:hover{background:rgba(27,156,242,.28);border-color:var(--acc2);color:#fff;transform:translateY(-2px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.4rem;border-radius:14px;font-weight:600;font-size:.9rem;border:1px solid transparent;cursor:pointer;transition:transform .25s,background .25s,box-shadow .25s,border-color .25s}
+.btn:active{transform:scale(.96)}
+.btn-p{background:linear-gradient(180deg,#34b0ff,#0b84e0);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 10px 26px -8px rgba(27,156,242,.8)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 14px 30px -8px rgba(27,156,242,1)}
+.btn-g{color:#fff;border-color:var(--line);background:rgba(255,255,255,.08);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.btn-g:hover{transform:translateY(-2px);border-color:var(--acc2);background:rgba(255,255,255,.15)}
+/* Nav */
+.nl{display:block;padding:.5rem .85rem;border-radius:999px;font-size:.85rem;font-weight:500;color:#c9d9f3;transition:color .25s,background .25s,transform .15s}
+.nl:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nl:active{transform:scale(.94)}
+.nl.on{color:var(--acc2);background:rgba(27,156,242,.2);box-shadow:inset 0 0 0 1px rgba(90,209,255,.45)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--acc2);outline-offset:3px}
+.ln{color:var(--acc2);font-size:.82rem;font-weight:500;transition:color .2s}.ln:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.fld{width:100%;margin-top:.35rem;padding:.7rem .9rem;border-radius:12px;color:#fff;font:inherit;font-size:.9rem;background:rgba(2,8,26,.55);border:1px solid var(--line);transition:border-color .2s,box-shadow .2s}
+.fld:focus{outline:none;border-color:var(--acc2);box-shadow:0 0 0 3px rgba(90,209,255,.22)}
+.thumb{aspect-ratio:16/10;width:100%;display:block;object-fit:cover}
+.skip{position:absolute;left:1rem;top:-4rem;z-index:100;padding:.6rem 1rem;border-radius:10px;background:var(--acc);color:#fff}.skip:focus{top:calc(env(safe-area-inset-top,0px) + .6rem)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+/* Portfolio image and external project links */
+.profile-photo{display:block;object-position:center;min-height:240px;background:#07152d}
+.project-link{font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.project-link:hover{color:#fff}
+
+/* Linked project previews */
+article > a:focus-visible{display:block;outline:2px solid var(--acc2);outline-offset:3px;border-radius:12px}
+
+/* ===== Added for the project manager (these rules are NOT in your original portfolio) ===== */
+.glass.still:hover{transform:none}
+.fld.fld-error{border-color:#ff9aa8}
+.fld.fld-error:focus{border-color:#ff9aa8;box-shadow:0 0 0 3px rgba(255,154,168,.22)}
+.fld::file-selector-button{margin-right:.8rem;padding:.35rem .8rem;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.1);color:#fff;cursor:pointer}
+input[type=date].fld{color-scheme:dark}
+.btn-d{color:#ffd0d6;border-color:rgba(255,120,140,.45);background:rgba(255,90,110,.14)}
+.btn-d:hover{transform:translateY(-2px);background:rgba(255,90,110,.28);border-color:#ff9aa8}
+.btn[disabled]{opacity:.6;cursor:not-allowed;transform:none}
